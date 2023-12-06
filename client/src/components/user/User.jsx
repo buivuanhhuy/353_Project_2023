@@ -1,7 +1,9 @@
 import React from "react";
 import "../../styles/User.css";
+import { useAuth } from "../../authentication/AuthContext";
 
 function User({ user, onDelete }) {
+  const { authState } = useAuth();
   return (
     <div className="user-card">
       <div className="user-card-container">
@@ -76,7 +78,7 @@ function User({ user, onDelete }) {
             <strong>Joined: </strong>
             {new Date(user.created).toLocaleDateString()}
           </p>
-          {user.role !== "admin" && (
+          {user.role !== "admin" && authState.user.role === "admin" && (
             <div className="user-card-buttons">
               <button
                 className="user-card-button"

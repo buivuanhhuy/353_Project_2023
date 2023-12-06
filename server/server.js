@@ -924,16 +924,14 @@ function classifyUser(postNum, rating) {
   if (postNum <= beginnerPostNum || rating <= beginnerRating) {
     return 1;
   } else if (postNum >= expertPostNum && rating >= expertRating) {
-    return 2;
-  } else {
     return 3;
+  } else {
+    return 2;
   }
 }
 
 app.use(express.static("uploads"));
 
-app.listen(process.env.SERVER_PORT, "0.0.0.0", () => {
-  console.log(
-    `Server is running on port ${process.env.SERVER_PORT} and host 0.0.0.0`
-  );
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`Server is running on port ${process.env.SERVER_PORT}`);
 });
